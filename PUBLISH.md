@@ -1,15 +1,16 @@
-# Загрузка в репозиторий
+# Publishing a clean copy
 
-Назначение: https://github.com/Djancer/scan-everything (public).
-Комплект содержит только headless-пример. Частная установка LUX не изменяется.
+The project repository is [Djancer/scan-everything](https://github.com/Djancer/scan-everything).
+Publish only the headless example; do not change or upload a private LUX installation.
 
-Если интеграция GitHub возвращает `403 Resource not accessible by integration`,
-это не разрешение на запись. Для самостоятельной публикации новой копии:
+If a GitHub integration returns `403 Resource not accessible by integration`, it
+does not have the required write access. Options for publishing your own clean copy:
 
-1. Предоставить GitHub-интеграции доступ к этому репозиторию и разрешение записи
-   содержимого; затем повторить публикацию. Не передавайте личный access token в чат.
-2. Войти владельцем в GitHub во встроенном браузере и загрузить проверенный комплект.
-3. Использовать Git локально после распаковки архива и проверки списка файлов:
+1. Grant the integration repository/content write access, then retry. Do not paste a personal access token into chat.
+2. Sign into GitHub as the owner and upload the audited files, preserving folder structure.
+3. Use Git locally after unpacking and reviewing the publication set.
+
+For a new clean folder and a new empty remote, replace YOUR_ACCOUNT with your account:
 
 ```powershell
 git init -b main
@@ -17,18 +18,18 @@ git add .
 git diff --cached --stat
 git diff --cached
 git commit -m "Add local Qwen document processing example and guides"
-git remote add origin https://github.com/Djancer/scan-everything.git
+git remote add origin https://github.com/YOUR_ACCOUNT/scan-everything.git
 git push -u origin main
 ```
 
-Команды предназначены для новой чистой папки из этого ZIP, **не C:\LUX**. Git может
-запросить имя/email автора и авторизацию — задайте собственные, не публикуйте секреты.
-Если remote уже не пустой, сначала проверьте его содержимое; не используйте force push.
+Do not run this sequence inside a private installation. Git may request author
+name/email and authentication; provide your own details without publishing secrets.
+If the remote already has content, inspect it first. Do not force-push.
 
-`.github/workflows/tests.yml` потребует права на запись workflows, если способ
-авторизации их ограничивает. Не отключайте защиту аккаунта ради загрузки.
-После push проверьте README, ссылки, SKILL.md и результат Actions. Модель, OCR,
-runtime и личные документы никогда не должны попадать в репозиторий.
+Uploading `.github/workflows/tests.yml` may require workflow-write permission
+depending on the authentication method. Do not disable account protection to upload.
+After publication, verify README, its language links, guides, SKILL.md, and Actions.
+Model weights, OCR/Python runtimes, personal documents, and private UI assets must stay out.
 
-Лицензия исходников пока не выбрана владельцем. Отдельный GitHub Pages-сайт здесь
-не нужен: README является главной страницей проекта, HTML намеренно отсутствует.
+No source license has been selected yet. A separate GitHub Pages website is not
+required: README is the project landing page, and HTML is intentionally excluded.
